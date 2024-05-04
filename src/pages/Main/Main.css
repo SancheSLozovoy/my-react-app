@@ -1,0 +1,67 @@
+@font-face {
+    font-family: Lora;
+    font-weight: 900;
+    font-style: normal;
+    src: local("Lora"),
+         url(../font/Lora-Bold.ttf) format("ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Lora;
+    font-weight: 400;
+    font-style: normal;
+    src: local("Lora"),
+            url(../font/Lora-Regular.ttf) format("ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Lora;
+    font-weight: 700;
+    font-style: normal;
+    src: local("Lora"),
+            url(../font/Lora-Medium.ttf) format("ttf");
+    font-display: swap;
+}
+
+html{
+    background-color: #354733;
+}
+.content {
+    margin-top: 180px; 
+    margin-bottom: 100px;
+  }
+.Main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Main-button {
+    position: fixed;
+    top: 15px;
+    right: 50px; 
+    width: 253px;
+    height: 53px;
+    border-radius: 30px;
+    background-color: #B99274;
+    border: none;
+    color: #111;
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.Main-button:hover{
+    background-color: #b6825b;
+    transition: 0.3s;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 70px;
+    max-width: 1046px;
+}

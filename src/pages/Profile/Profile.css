@@ -1,0 +1,78 @@
+@font-face {
+    font-family: Lora;
+    font-weight: 900;
+    font-style: normal;
+    src: local("Lora"),
+         url(../font/Lora-Bold.ttf) format("ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Lora;
+    font-weight: 400;
+    font-style: normal;
+    src: local("Lora"),
+            url(../font/Lora-Regular.ttf) format("ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Lora;
+    font-weight: 700;
+    font-style: normal;
+    src: local("Lora"),
+            url(../font/Lora-Medium.ttf) format("ttf");
+    font-display: swap;
+}
+
+.Profile {
+    text-align: center;
+  }
+  
+.Profile-header__input {
+    background-color: #D9D9D9;
+    box-shadow: 20px 10px 0px rgba(26, 26, 26, 0.5);
+    margin-bottom: 75px;
+    height: 75px;
+    width: 650px;
+    border-radius: 30px; 
+    font-size: 18px;
+    font-family: Lora;
+    padding-left: 15px;
+    border: none;
+}
+  
+.Profile-header {
+    font-family: Lora;
+    font-weight: 900;
+    background-color: #354733;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Profile-title{
+    font-weight: 900;
+    color: #F3F3FB;
+    font-size: 120px;
+    text-shadow: 20px 10px 0px rgba(26, 26, 26, 0.5); 
+  }
+
+.Profile-p{
+    font-family: Lora;
+    font-weight: 900;
+    font-size: 42px;
+    color: #F3F3FB;
+}
+
+.Profile-input{
+    height: 75px;
+    width: 650px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 30px;
+    padding-left: 40px;
+    font-size: 22px;
+}
