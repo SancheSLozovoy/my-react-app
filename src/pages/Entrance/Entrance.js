@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import axios from 'axios';
 import './Entrance.css';
 
 function Entrance() {
@@ -11,7 +12,16 @@ function Entrance() {
         if (login.trim() === '' || password.trim() === '') {
             alert('Заполните все поля!');
         } else {
-            history.push('/main');
+            // Отправляем запрос на сервер для авторизации пользователя
+            axios.post('/login', { login, password })
+                .then(response => {
+                    console.log(response.data);
+                    history.push('/main');
+                })
+                .catch(error => {
+                    console.error('Ошибка при входе:', error);
+                    alert('Ошибка при входе. Пожалуйста, проверьте свои учетные данные и попробуйте снова.');
+                });
         }
     };
 

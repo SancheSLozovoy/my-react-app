@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './Register.css';
+import axios from 'axios'; // Импорт библиотеки Axios
 
 function Register() {
     const [login, setLogin] = useState('');
@@ -11,7 +12,16 @@ function Register() {
         if (login.trim() === '' || password.trim() === '') {
             alert('Заполните все поля!');
         } else {
-            history.push('/main');
+            // Отправка данных на сервер с помощью Axios
+            axios.post('/register', { name: login, password: password })
+                .then(response => {
+                    console.log(response.data); // Выводим ответ сервера в консоль
+                    history.push('/main');
+                })
+                .catch(error => {
+                    console.error('Ошибка при регистрации:', error);
+                    alert('Ошибка при регистрации. Пожалуйста, попробуйте снова.');
+                });
         }
     };
 

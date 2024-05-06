@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Popup.css';
 
 function Popup({ onAddAd }) {
@@ -12,9 +13,19 @@ function Popup({ onAddAd }) {
                 price: parseFloat(price),
                 userId: 1 // Предполагается, что здесь вы установите ID пользователя
             };
-            onAddAd(newAd);
-            setTitle('');
-            setPrice('');
+
+            // Отправка POST запроса на сервер
+            axios.post('/advertisements', newAd)
+                .then(response => {
+                    console.log(response.data); // Выводим ответ сервера в консоль
+                    onAddAd(newAd); // Добавляем объявление в список на фронтенде
+                    setTitle('');
+                    setPrice('');
+                })
+                .catch(error => {
+                    console.error('Ошибка при добавлении объявления:', error);
+                    alert('Ошибка при добавлении объявления. Пожалуйста, попробуйте снова.');
+                });
         } else {
             alert('Пожалуйста, заполните все поля');
         }

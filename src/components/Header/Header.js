@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './Header.css';
-import main from './Home Page.svg';
+import main from './HomePage.svg';
 import acc from './Account.png';
 
 const Header = () => {

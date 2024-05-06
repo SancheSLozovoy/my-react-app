@@ -55,6 +55,7 @@ html{
 }
 
 .Main-button:hover{
+    border:2px solid #B99274;
     background-color: #b6825b;
     transition: 0.3s;
 }
