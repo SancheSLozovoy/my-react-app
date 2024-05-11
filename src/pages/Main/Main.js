@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
-import './Main.css';
+// Main.js
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Ad from '../../components/Ad/Ad';
 import Popup from '../../components/Popup/Popup';
+import './Main.css';
 import Header from '../../components/Header/Header';
 
 function Main() {
     const [ads, setAds] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
-    const [nextId, setNextId] = useState(1); // Уникальный идентификатор для новых объявлений
+    const [currentUser, setCurrentUser] = useState(null); // Добавляем состояние для текущего пользователя
+
+    useEffect(() => {
+        const fetchAdvertisements = async () => {
+            try {
+                const response = await axios.get('https://fe4f5b2b7285d6c0.mokky.dev/advertisements');
+                setAds(response.data);
+            } catch (error) {
+                console.error('Ошибка при загрузке объявлений:', error);
+            }
+        };
+
+        fetchAdvertisements();
+    }, []);
+
+    useEffect(() => {
+        // Загрузка данных о текущем пользователе из локального хранилища
+        const storedUser = localStorage.getItem('currentUser');
+        setCurrentUser(JSON.parse(storedUser));
+    }, []);
 
     const handleAddAd = (newAd) => {
-        newAd.id = nextId; // Присваиваем уникальный идентификатор
         setAds([...ads, newAd]);
-        setNextId(nextId + 1); // Увеличиваем счетчик для следующего идентификатора
         setShowPopup(false);
     };
 
@@ -25,10 +45,10 @@ function Main() {
             <Header />
             <div className='content'>
                 <button className="Main-button" onClick={() => setShowPopup(true)}>Добавить объявление</button>
-                {showPopup && <Popup onAddAd={handleAddAd} />}
+                {showPopup && <Popup onAddAd={handleAddAd} currentUser={currentUser} />} {/* Передаем currentUser в Popup */}
                 <div className="grid-container">
                     {ads.map((ad) => (
-                        <Ad key={ad.id} ad={ad} onDelete={handleDeleteAd} />
+                        <Ad key={ad.id} ad={ad} onDelete={handleDeleteAd} currentUser={currentUser} /> 
                     ))}
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './Register.css';
-import axios from 'axios'; // Импорт библиотеки Axios
+import axios from 'axios';
 
 function Register() {
     const [login, setLogin] = useState('');
@@ -12,10 +12,13 @@ function Register() {
         if (login.trim() === '' || password.trim() === '') {
             alert('Заполните все поля!');
         } else {
-            // Отправка данных на сервер с помощью Axios
-            axios.post('/register', { name: login, password: password })
+            // Отправка данных на сервер Mokky Dev для регистрации
+            axios.post('https://fe4f5b2b7285d6c0.mokky.dev/users', { Name: login, Password: password })
                 .then(response => {
-                    console.log(response.data); // Выводим ответ сервера в консоль
+                    console.log(response.data);
+                    // Сохраняем пользователя в локальное хранилище
+                    localStorage.setItem('currentUser', JSON.stringify(response.data));
+                    alert('Регистрация успешна!');
                     history.push('/main');
                 })
                 .catch(error => {

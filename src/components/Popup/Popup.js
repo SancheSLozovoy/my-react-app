@@ -1,8 +1,10 @@
+// Popup.js
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Popup.css';
 
-function Popup({ onAddAd }) {
+function Popup({ onAddAd, currentUser }) {
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
 
@@ -11,14 +13,14 @@ function Popup({ onAddAd }) {
             const newAd = {
                 title: title,
                 price: parseFloat(price),
-                userId: 1 // Предполагается, что здесь вы установите ID пользователя
+                userId: currentUser.id // Используем ID текущего пользователя
             };
 
-            // Отправка POST запроса на сервер
-            axios.post('/advertisements', newAd)
+            // Отправка POST запроса на сервер Mokky Dev для добавления объявления
+            axios.post('https://fe4f5b2b7285d6c0.mokky.dev/advertisements', newAd)
                 .then(response => {
                     console.log(response.data); // Выводим ответ сервера в консоль
-                    onAddAd(newAd); // Добавляем объявление в список на фронтенде
+                    onAddAd(response.data); // Добавляем объявление в список на фронтенде
                     setTitle('');
                     setPrice('');
                 })
