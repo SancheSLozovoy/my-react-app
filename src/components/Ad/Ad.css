@@ -1,73 +1,87 @@
 @font-face {
-    font-family: Lora;
-    font-weight: 900;
+    font-family: 'Lora';
     font-style: normal;
-    src: local("Lora"),
-         url(../../pages/font/Lora-Bold.ttf) format("ttf");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: Lora;
     font-weight: 400;
-    font-style: normal;
-    src: local("Lora"),
-            url(../../pages/font/Lora-Regular.ttf) format("ttf");
+    src: local('Lora Regular'), local('Lora-Regular'),
+        url('../../pages/font/Lora-Regular.ttf') format('ttf');
     font-display: swap;
 }
 
 @font-face {
-    font-family: Lora;
-    font-weight: 700;
+    font-family: 'Lora';
     font-style: normal;
-    src: local("Lora"),
-            url(../../pages/font/Lora-Medium.ttf) format("ttf");
+    font-weight: 700;
+    src: local('Lora Medium'), local('Lora-Medium'),
+        url('../../pages/font/Lora-Medium.ttf') format('ttf');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 900;
+    src: local('Lora Bold'), local('Lora-Bold'),
+        url('../../pages/font/Lora-Bold.ttf') format('ttf');
     font-display: swap;
 }
 
 .Ad {
     width: 473px;
     height: 307px;
-    background-color: #D9D9D9;
-    padding-left: 30px;
+    background-color: #F4F4F4;
+    padding: 20px;
     box-sizing: border-box;
     border-radius: 15px;
-    box-shadow: 20px 10px 0px rgba(26, 26, 26, 0.5);
-}
-.Ad-button__delete{
-    color: #D9D9D9;
-    background-color: rgb(156, 56, 56);
-    border: none;
-    border-radius: 10px;
-    height: 20px;
-    width: 100px;
-    transition: 0.3s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.Ad-button__delete:hover{
-    color: #D9D9D9;
-    background-color: rgb(184, 67, 67);
-    border: 2px solid black;
-    transition: 0.3s;
+.Ad-button__delete, .Ad-button__favorite {
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
+
+.Ad-button__delete {
+    background-color: #DA5454;
+    border: 1px solid #DA5454;
+    color: #FFFFFF;
+}
+
+.Ad-button__favorite {
+    background-color: #8A9B6E;
+    border: 1px solid #8A9B6E;
+    color: #FFFFFF;
+}
+
+.Ad-button__favorite:hover{
+    background-color: #525f3c;
+}
+
+.Ad-button__delete:hover {
+    background-color: #b33434;
+    border: 1px solid #E64B4B;
+}
+
 .Ad-title {
-    font-family: Lora;
+    font-family: 'Lora', serif;
     font-size: 28px;
     font-weight: 900;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     overflow: hidden;
 }
 
-
 .Ad-user {
-    font-family: Lora;
+    font-family: 'Lora', serif;
     font-size: 20px;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .Ad-price {
-    font-family: Lora;
+    font-family: 'Lora', serif;
     font-size: 42px;
-    font-weight: 900; 
+    font-weight: 900;
+    color: #333333;
+    margin-bottom: 20px;
 }

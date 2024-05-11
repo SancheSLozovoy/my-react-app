@@ -3,19 +3,17 @@ ul {
     list-style: none;
     align-items: center;
     justify-content: center;
-    height: 100%; /* Сделаем высоту элемента равной высоте родительского блока (в данном случае, header) */
-    margin: 0; /* Убираем внешние отступы */
-    padding: 0; /* Убираем внутренние отступы */
-  }
-  
-  li {
-    margin: 0 10px; 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0 10px;
     align-self: center;
-    justify-self: center;
-  }
-  
- 
-  .header {
+}
+
+.header {
     display: flex;
     position: fixed;
     top: 0;
@@ -24,14 +22,14 @@ ul {
     background-color: #c4c4c4;
     color: #111;
     padding: 20px;
-  }
-  
-  ul img {
+}
+
+ul img {
     width: 40px;
     height: 40px;
-    transition: all 0.3s;
-  }
-  img:hover{
+    transition: transform 0.3s;
+}
+
+ul img:hover {
     transform: scale(1.15);
-    transition: all 0.3s;
-  }
+}

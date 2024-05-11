@@ -46,6 +46,7 @@
     font-weight: 900;
     color: #B99274;
     font-size: 42px;
+    padding: 15px;
 }
 
 .Profile-header {
@@ -58,6 +59,28 @@
     align-items: center;
     justify-content: center;
   }
+
+.Profile-search-box{
+    margin-bottom: 30px;
+}
+
+.Profile-favorite-ad{
+    width: 473px;
+    height: 307px;
+    background-color: #F4F4F4;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+
+.Profile-user-block{
+    background-color: #d1d1d1;
+    border-radius: 15px;
+    margin-bottom: 80px;
+}
 
   .Profile-title{
     font-weight: 900;
@@ -88,6 +111,7 @@
 }
 
 .Profile-input{
+    margin-bottom: 15px;
     height: 75px;
     width: 650px;
     background-color: #D9D9D9;
