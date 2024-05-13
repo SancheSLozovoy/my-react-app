@@ -12,22 +12,33 @@ function Register() {
         if (login.trim() === '' || password.trim() === '') {
             alert('Заполните все поля!');
         } else {
-            // Отправка данных на сервер Mokky Dev для регистрации
-            axios.post('https://fe4f5b2b7285d6c0.mokky.dev/users', { Name: login, Password: password })
+            // Проверка наличия пользователя с таким логином
+            axios.get(`https://fe4f5b2b7285d6c0.mokky.dev/users?Name=${login}`)
                 .then(response => {
-                    console.log(response.data);
-                    // Сохраняем пользователя в локальное хранилище
-                    localStorage.setItem('currentUser', JSON.stringify(response.data));
-                    alert('Регистрация успешна!');
-                    history.push('/main');
+                    if (response.data.length > 0) {
+                        alert('Пользователь с таким логином уже существует. Пожалуйста, выберите другой логин.');
+                    } else {
+                        // Регистрация нового пользователя
+                        axios.post('https://fe4f5b2b7285d6c0.mokky.dev/users', { Name: login, Password: password })
+                            .then(response => {
+                                console.log(response.data);
+                                // Сохраняем пользователя в локальное хранилище
+                                localStorage.setItem('currentUser', JSON.stringify(response.data));
+                                alert('Регистрация успешна!');
+                                history.push('/main');
+                            })
+                            .catch(error => {
+                                console.error('Ошибка при регистрации:', error);
+                                alert('Ошибка при регистрации. Пожалуйста, попробуйте снова.');
+                            });
+                    }
                 })
                 .catch(error => {
-                    console.error('Ошибка при регистрации:', error);
-                    alert('Ошибка при регистрации. Пожалуйста, попробуйте снова.');
+                    console.error('Ошибка при проверке логина:', error);
+                    alert('Ошибка при проверке логина. Пожалуйста, попробуйте снова.');
                 });
         }
     };
-
     return (
         <div className="Register">
             <header className="Register-header">
