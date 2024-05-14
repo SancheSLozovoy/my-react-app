@@ -21,9 +21,7 @@ function Entrance() {
                     const user = users.find(u => u.Name === login && u.Password === password);
                     setLoading(false);
                     if (user) {
-                        // Сохраняем пользователя в локальное хранилище
                         localStorage.setItem('currentUser', JSON.stringify(user));
-                        // Перенаправляем на страницу 'main'
                         history.push('/main');
                     } else {
                         alert('Ошибка при входе. Пожалуйста, проверьте свои учетные данные и попробуйте снова.');

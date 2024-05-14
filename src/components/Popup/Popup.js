@@ -1,5 +1,3 @@
-// Popup.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Popup.css';
@@ -13,14 +11,13 @@ function Popup({ onAddAd, currentUser }) {
             const newAd = {
                 title: title,
                 price: parseFloat(price),
-                userId: currentUser.id // Используем ID текущего пользователя
+                userId: currentUser.id 
             };
 
-            // Отправка POST запроса на сервер Mokky Dev для добавления объявления
             axios.post('https://fe4f5b2b7285d6c0.mokky.dev/advertisements', newAd)
                 .then(response => {
-                    console.log(response.data); // Выводим ответ сервера в консоль
-                    onAddAd(response.data); // Добавляем объявление в список на фронтенде
+                    console.log(response.data);
+                    onAddAd(response.data); 
                     setTitle('');
                     setPrice('');
                 })
@@ -32,6 +29,10 @@ function Popup({ onAddAd, currentUser }) {
             alert('Пожалуйста, заполните все поля');
         }
     };
+
+    if (!currentUser) {
+        return null; 
+    }
 
     return (
         <div className="Popup">

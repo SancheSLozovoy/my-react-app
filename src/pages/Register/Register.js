@@ -12,17 +12,14 @@ function Register() {
         if (login.trim() === '' || password.trim() === '') {
             alert('Заполните все поля!');
         } else {
-            // Проверка наличия пользователя с таким логином
             axios.get(`https://fe4f5b2b7285d6c0.mokky.dev/users?Name=${login}`)
                 .then(response => {
                     if (response.data.length > 0) {
                         alert('Пользователь с таким логином уже существует. Пожалуйста, выберите другой логин.');
                     } else {
-                        // Регистрация нового пользователя
                         axios.post('https://fe4f5b2b7285d6c0.mokky.dev/users', { Name: login, Password: password })
                             .then(response => {
                                 console.log(response.data);
-                                // Сохраняем пользователя в локальное хранилище
                                 localStorage.setItem('currentUser', JSON.stringify(response.data));
                                 alert('Регистрация успешна!');
                                 history.push('/main');

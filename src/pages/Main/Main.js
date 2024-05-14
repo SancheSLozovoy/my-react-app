@@ -1,5 +1,3 @@
-// Main.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Ad from '../../components/Ad/Ad';
@@ -10,7 +8,7 @@ import Header from '../../components/Header/Header';
 function Main() {
     const [ads, setAds] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
-    const [currentUser, setCurrentUser] = useState(null); // Добавляем состояние для текущего пользователя
+    const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(() => {
         const fetchAdvertisements = async () => {
@@ -21,14 +19,11 @@ function Main() {
                 console.error('Ошибка при загрузке объявлений:', error);
             }
         };
-
         fetchAdvertisements();
-    }, []);
 
-    useEffect(() => {
-        // Загрузка данных о текущем пользователе из локального хранилища
         const storedUser = localStorage.getItem('currentUser');
         setCurrentUser(JSON.parse(storedUser));
+
     }, []);
 
     const handleAddAd = (newAd) => {
@@ -45,7 +40,7 @@ function Main() {
             <Header />
             <div className='content'>
                 <button className="Main-button" onClick={() => setShowPopup(true)}>Добавить объявление</button>
-                {showPopup && <Popup onAddAd={handleAddAd} currentUser={currentUser} />} {/* Передаем currentUser в Popup */}
+                {showPopup && <Popup onAddAd={handleAddAd} currentUser={currentUser} />} 
                 <div className="grid-container">
                     {ads.map((ad) => (
                         <Ad key={ad.id} ad={ad} onDelete={handleDeleteAd} currentUser={currentUser} /> 
