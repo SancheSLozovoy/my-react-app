@@ -30,6 +30,13 @@ function Popup({ onAddAd, currentUser }) {
         }
     };
 
+    const handlePriceChange = (e) => {
+        const value = e.target.value;
+        if (!isNaN(value)) {
+            setPrice(value);
+        }
+    };
+
     if (!currentUser) {
         return null; 
     }
@@ -38,7 +45,7 @@ function Popup({ onAddAd, currentUser }) {
         <div className="Popup">
             <h2>Добавить объявление</h2>
             <input type="text" placeholder="Название" value={title} maxLength={45} onChange={(e) => setTitle(e.target.value)} />
-            <input type="number" placeholder="Цена" value={price} maxLength={1} onChange={(e) => setPrice(e.target.value)} />
+            <input type="text" placeholder="Цена" value={price} maxLength={10} onChange={handlePriceChange} />
             <button onClick={handleAddAd}>Добавить</button>
         </div>
     );
